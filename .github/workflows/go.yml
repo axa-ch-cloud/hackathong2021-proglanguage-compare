@@ -17,6 +17,10 @@ jobs:
         working-directory: ./go
         run: |
           go build ./cmd/mandelbrot
+      - name: Prepare directory
+        working-directory: ./go
+        run: |
+          mkdir db
       - name: Run test
         working-directory: ./go
         run: |
