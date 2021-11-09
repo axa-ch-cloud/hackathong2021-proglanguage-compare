@@ -52,7 +52,7 @@ public class MandelbrotService {
           IMAGINARY_SET_START + ((double) j / request.getHeigth()) * (IMAGINARY_SET_END - IMAGINARY_SET_START)
         );
 
-        Map.Entry<Integer, Boolean> result = mandelbrot(complex, request.getMaxIterations());
+        Map.Entry<Integer, Boolean> result = mandelbrot(complex, 80);
         data[i][j] = result.getValue();
       }
     }

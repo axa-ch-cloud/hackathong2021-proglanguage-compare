@@ -7,6 +7,6 @@ public class MandelbrotCreateRequest {
 
   private int width;
   private int heigth;
-  private int maxIterations;
+  //private int maxIterations;
 
 }
