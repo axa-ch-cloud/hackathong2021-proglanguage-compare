@@ -34,8 +34,7 @@ app.post('/mandelbrot', (req, res) => {
 app.get('/mandelbrot/:uuid', (req, res) => {
   const { uuid } = req.params;
   fs.readFile(`./db/${uuid}.json`, 'utf-8', (err, data) => {
-    const result = JSON.parse(data);
-    res.send(result);
+    res.json(data);
   });
 });
 /*
