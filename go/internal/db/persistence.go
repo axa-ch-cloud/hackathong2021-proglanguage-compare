@@ -3,10 +3,9 @@ package db
 import (
 	"encoding/json"
 	"fmt"
-	uuid2 "github.com/google/uuid"
-	"hackathon/mandelbrot/internal/profile"
 	"io/ioutil"
-	"time"
+
+	uuid2 "github.com/google/uuid"
 )
 
 const (
@@ -15,7 +14,6 @@ const (
 )
 
 func Store(entity Entity) (string, error) {
-	defer profile.TimeTrack(time.Now(), "Store")
 	uuid := uuid2.NewString()
 	filename := fmt.Sprintf("%s%s.json", dir, uuid)
 	jsonData, err := json.Marshal(entity)

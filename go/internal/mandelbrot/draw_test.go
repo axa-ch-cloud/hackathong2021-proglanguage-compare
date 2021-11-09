@@ -26,6 +26,12 @@ func TestDraw(t *testing.T) {
 	}
 }
 
+func BenchmarkDraw(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Draw(512, 512)
+	}
+}
+
 func expected() []bool {
 	return []bool{false, false, false, false, false, true, false, false, false, false,
 		false, false, false, false, false, true, false, false, false, false,

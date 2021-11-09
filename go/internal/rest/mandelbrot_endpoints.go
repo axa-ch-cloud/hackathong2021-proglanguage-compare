@@ -2,13 +2,12 @@ package rest
 
 import (
 	"encoding/json"
-	"github.com/gorilla/mux"
 	"hackathon/mandelbrot/internal/db"
 	"hackathon/mandelbrot/internal/mandelbrot"
-	"hackathon/mandelbrot/internal/profile"
 	"io/ioutil"
 	"net/http"
-	"time"
+
+	"github.com/gorilla/mux"
 )
 
 func GetMandelbrot(w http.ResponseWriter, r *http.Request) {
@@ -26,7 +25,6 @@ func GetMandelbrot(w http.ResponseWriter, r *http.Request) {
 }
 
 func PostMandelbrot(w http.ResponseWriter, r *http.Request) {
-	defer profile.TimeTrack(time.Now(), "PostMandelbrot")
 	reqBody, _ := ioutil.ReadAll(r.Body)
 	var params Params
 	err := json.Unmarshal(reqBody, &params)

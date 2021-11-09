@@ -1,10 +1,5 @@
 package mandelbrot
 
-import (
-	"hackathon/mandelbrot/internal/profile"
-	"time"
-)
-
 var realSet = &complx{x: -2, y: 1}
 var imaginarySet = &complx{x: -1, y: 1}
 
@@ -32,8 +27,6 @@ func (m *Matrix) coord(i int64) (x, y int64) {
 }
 
 func Draw(width, height int64) *Matrix {
-	defer profile.TimeTrack(time.Now(), "Draw")
-
 	matrix := NewMatrix(width, height)
 
 	var i int64
