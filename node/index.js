@@ -26,20 +26,16 @@ app.post('/mandelbrot', (req, res) => {
   const { width, height } = req.body;
   const result = draw(width, height);
   const uuid = createUUID();
-  const finalObject = {
-    uuid,
-    result
-  };
-  fs.writeFile(`./db/${uuid}.json`, JSON.stringify(finalObject), () => {
-    res.send(finalObject);
+  fs.writeFile(`./db/${uuid}.json`, JSON.stringify(result), () => {
+    res.send(uuid);
   });
 });
 
 app.get('/mandelbrot/:uuid', (req, res) => {
   const { uuid } = req.params;
   fs.readFile(`./db/${uuid}.json`, 'utf-8', (err, data) => {
-    const { result } = JSON.parse(data);
-    res.send( result );
+    const result = JSON.parse(data);
+    res.send(result);
   });
 });
 /*
