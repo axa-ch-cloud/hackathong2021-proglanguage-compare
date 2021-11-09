@@ -17,12 +17,4 @@ jobs:
       - name: Run test
         working-directory: ./java/spring-mandelbrot/target
         run: |
-          java -jar mandelbrot-1.0-SNAPSHOT.jar &
-          echo "Started Spring Application"
-          cd ../../../sh
-          echo "Changed Directory"
-          sh ./java-index.sh
-          echo "Kill java"
-          killall java
-          echo "exit"
-          exit
+          java -jar mandelbrot-1.0-SNAPSHOT.jar & $(cd ../../../sh && sh java-index.sh)
