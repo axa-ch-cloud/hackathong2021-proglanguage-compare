@@ -20,3 +20,4 @@ jobs:
           java -jar mandelbrot-1.0-SNAPSHOT.jar &
           cd ../../../sh
           sh java-index.sh
+          killall java
