@@ -1,6 +1,8 @@
 package mandelbrot
 
-import "math"
+import (
+	"math"
+)
 
 const maxIteration = 80
 

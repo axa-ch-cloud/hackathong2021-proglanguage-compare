@@ -20,6 +20,7 @@ func main() {
 	router.HandleFunc("/mandelbrot/{uuid}", rest.GetMandelbrot).Methods(httpGet)
 	portStr := fmt.Sprintf(":%s", "8080")
 	log.Println("will listen on ", portStr)
+
 	if err := http.ListenAndServe(portStr, router); err != nil {
 		log.Fatalf("unable to start http server, %s", err)
 	}

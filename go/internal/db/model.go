@@ -1,11 +1,13 @@
 package db
 
+import "hackathon/mandelbrot/internal/mandelbrot"
+
 type Entity struct {
-	Result [][]bool `json:"result"`
+	Result mandelbrot.Matrix `json:"result"`
 }
 
-func New(result [][]bool) Entity {
+func New(matrix *mandelbrot.Matrix) Entity {
 	return Entity{
-		Result: result,
+		Result: *matrix,
 	}
 }
