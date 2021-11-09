@@ -3,7 +3,7 @@
 UUID=$(curl -X POST -H "Content-Type: application/json" -d "{\"width\":1000,\"height\":1000}" http://localhost:8080/mandelbrot)
 
 echo "\n"
-echo $UUID
+echo "$UUID"
 echo "\n"
 
 echo "\n"
