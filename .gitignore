@@ -1,97 +1,50 @@
-# Gradle
-# ------
-.gradle
-/build
-/*/build
-/*/*/build
-/*/*/*/build
-/*/*/*/*/build
-/*/docs/src/samples/**/build
-/*/docs/src/snippets/**/build
-/*/internal-android-performance-testing/build-android-libs
-test-splits/
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
 
-# IDEA
-# ----
-!/.idea
-/.idea/*
-!/.idea/codeStyles
-!/.idea/inspectionProfiles
-!/.idea/icon.png
-!/.idea/icon_dark.png
-*/**/.idea
-*/**/.shelf
-.shelf
-/*.iml
-/*/*.iml
-/*/*/*.iml
-/*/*/*/*.iml
-/*/*/*/*/*.iml
-/out
-/*/out
-/*/*/out
-/*/*/*/out
-/*/*/*/*/out
-/.teamcity/target
-/gradle.ipr
-/gradle.iws
+# Test binary, built with `go test -c`
+*.test
 
-# Eclipse
-# -------
-*.classpath
-*.project
-*.settings
-/bin
-/subprojects/*/bin
-atlassian-ide-plugin.xml
-.metadata/
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.out
+
+# Dependency directories (remove the comment below to include it)
+# vendor/
+
+# IntelliJ
+.idea
+*.ipr
+*.iml
+*.iws
 
 # NetBeans
-# --------
-.nb-gradle
-.nb-gradle-properties
+nb-configuration.xml
 
-# Vim
-# ---
-*.sw[nop]
+# Visual Studio Code
+.vscode
+.factorypath
 
-# Emacs
-# -----
-*~
-\#*\#
-.\#*
-
-# Textmate
-# --------
-.textmate
-
-# Sublime Text
-# ------------
-*.sublime-*
-
-# jEnv
-# ----
-.java-version
-
-# macOS
-# ----
+# OSX
 .DS_Store
 
-# HPROF
-# -----
-*.hprof
+# Vim
+*.swp
+*.swo
 
-# Work dirs
-# ---------
-/incoming-distributions
-/intTestHomeDir
+# patch
+*.orig
+*.rej
 
-# Logs
-# ----
-/*.log
+# Local environment
+.env
 
-# Thread dumps for troubleshooting
-*.threaddump
+# Log file
+*.log
 
-# oh-my-zsh gradle plugin
-.gradletasknamecache
+# Package Files #
+*.zip
+*.tar.gz
+*.rar
