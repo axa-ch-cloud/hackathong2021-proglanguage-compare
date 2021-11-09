@@ -23,15 +23,16 @@ namespace Mandelbrot.Controllers
 
             string json = JsonConvert.SerializeObject(mandelbrot, Formatting.Indented);
             Guid fileGuid = Guid.NewGuid();
+            Directory.CreateDirectory(FILE_PATH);
             System.IO.File.WriteAllText($"{FILE_PATH}/{fileGuid}.json", json);
 
             return fileGuid;
         }
 
         [HttpGet]
-        public string Get(Guid fileGuid)
+        public string Get(string fileUuid)
         {
-            using (StreamReader r = new StreamReader($"{FILE_PATH}/{fileGuid}.json"))
+            using (StreamReader r = new StreamReader($"{FILE_PATH}/{fileUuid.Replace("\"", "")}.json"))
             {
                 return r.ReadToEnd();
             }

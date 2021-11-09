@@ -1,0 +1,18 @@
+name: Run C# Test
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-dotnet@v1
+        with:
+          dotnet-version: '3.1.x'
+      - run: dotnet build Mandelbrot
+        working-directory: ./c#
+
+      - name: Run test
+        working-directory: ./c#
+        run: |
+          sh start-api.sh & $(sleep 2 && cd ../sh && sh c-sharp-index.sh)
