@@ -16,4 +16,30 @@ function mandelbrot(c) {
     return [n, d <= 2]
 }
 
-module.exports.mandelbrot = mandelbrot;
+const REAL_SET = { start: -2, end: 1 }
+const IMAGINARY_SET = { start: -1, end: 1 }
+
+function draw(width, height) {
+
+  const result = [];
+
+    for (let i = 0; i < width; i++) {
+
+        const column = [];
+        for (let j = 0; j < height; j++) {
+            complex = {
+                x: REAL_SET.start + (i / width) * (REAL_SET.end - REAL_SET.start),
+                y: IMAGINARY_SET.start + (j / height) * (IMAGINARY_SET.end - IMAGINARY_SET.start)
+            }
+
+            const [m, isMandelbrotSet] = mandelbrot(complex);
+            column.push(!!isMandelbrotSet)
+        }
+
+        result.push(column);
+    }
+
+    return result;
+}
+
+module.exports.draw = draw;

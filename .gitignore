@@ -50,3 +50,4 @@ nb-configuration.xml
 *.rar
 
 node_modules
+db

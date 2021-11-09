@@ -1,21 +1,50 @@
 #!/usr/bin/env node
 
 const express = require('express');
-const { mandelbrot } = require('./mandelbrot');
+const fs = require('fs');
+const { draw } = require('./mandelbrot');
 const app = express();
 const port = 3000;
 
 app.use(express.json());
 
-app.post('/mandelbrot', (req, res) => {
+function createUUID() {
+  let s = [];
+  let hexDigits = "0123456789abcdef";
+  for (let i = 0; i < 36; i++) {
+      s[i] = hexDigits.substr(Math.floor(Math.random() * 0x10), 1);
+  }
+  s[14] = "4";  // bits 12-15 of the time_hi_and_version field to 0010
+  s[19] = hexDigits.substr((s[19] & 0x3) | 0x8, 1);  // bits 6-7 of the clock_seq_hi_and_reserved to 01
+  s[8] = s[13] = s[18] = s[23] = "-";
 
-  console.log(req.body.seed);
-  res.send( mandelbrot(req.body.seed));
+  let uuid = s.join("");
+  return uuid;
+};
+
+app.post('/mandelbrot', (req, res) => {
+  const { width, height } = req.body;
+  const result = draw(width, height);
+  const uuid = createUUID();
+  const finalObject = {
+    uuid,
+    result
+  };
+  fs.writeFile(`./db/${uuid}.json`, JSON.stringify(finalObject), () => {
+    res.send(finalObject);
+  });
 });
 
-app.get('/', (req, res) => {
-  res.send(`
+app.get('/mandelbrot/:uuid', (req, res) => {
+  const { uuid } = req.params;
+  fs.readFile(`./db/${uuid}.json`, 'utf-8', (err, data) => {
+    const { result } = JSON.parse(data);
+    res.send( result );
+  });
+});
 
+app.get('/local', (req, res) => {
+  res.send(`
     <script>
     (async () => {
       const rawResponse = await fetch('http://localhost:3000/mandelbrot', {
@@ -24,7 +53,7 @@ app.get('/', (req, res) => {
           'Accept': 'application/json',
           'Content-Type': 'application/json'
         },
-        body: JSON.stringify({seed: 4000})
+        body: JSON.stringify({ width: 10, height: 10 })
       });
       const content = await rawResponse.json();
 
@@ -32,6 +61,10 @@ app.get('/', (req, res) => {
     })();
     </script>
   `)
+});
+
+app.get('/', (req, res) => {
+  res.send(`use <a href="http://localhost:${port}/local">/local</a> to test`)
 });
 
 app.listen(port, () => {
