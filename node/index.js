@@ -4,7 +4,7 @@ const express = require('express');
 const fs = require('fs');
 const { draw } = require('./mandelbrot');
 const app = express();
-const port = 3000;
+const port = 8080;
 
 app.use(express.json());
 
@@ -42,12 +42,15 @@ app.get('/mandelbrot/:uuid', (req, res) => {
     res.send( result );
   });
 });
+/*
+
+FOR LOCAL DEV
 
 app.get('/local', (req, res) => {
   res.send(`
     <script>
     (async () => {
-      const rawResponse = await fetch('http://localhost:3000/mandelbrot', {
+      const rawResponse = await fetch('http://localhost:8080/mandelbrot', {
         method: 'POST',
         headers: {
           'Accept': 'application/json',
@@ -66,6 +69,8 @@ app.get('/local', (req, res) => {
 app.get('/', (req, res) => {
   res.send(`use <a href="http://localhost:${port}/local">/local</a> to test`)
 });
+
+*/
 
 app.listen(port, () => {
   console.log(`Example app listening at http://localhost:${port}`)
