@@ -15,4 +15,4 @@ jobs:
       - name: Run test
         working-directory: ./node
         run: |
-          ./npm start & $(cd ../sh && sh index.sh)
+          npm start & $(cd ../sh && sh index.sh)
