@@ -20,5 +20,4 @@ jobs:
       - name: Run test
         working-directory: ./go
         run: |
-          ls -haltr
-#          ./main & $(cd ../sh && sh index.sh)
+          ./mandelbrot & $(cd ../sh && sh index.sh)
