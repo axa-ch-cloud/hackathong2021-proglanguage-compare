@@ -18,6 +18,5 @@ jobs:
         working-directory: ./java/spring-mandelbrot/target
         run: |
           java -jar mandelbrot-1.0-SNAPSHOT.jar &
-          cd ../../../sh
-          sh java-index.sh
+          sh ../../../sh/java-index.sh
           killall java
