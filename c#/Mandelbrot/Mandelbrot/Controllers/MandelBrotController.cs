@@ -1,14 +1,12 @@
-﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
-using System.Collections.Generic;
 using System.IO;
-using System.Text.Json;
 
 namespace Mandelbrot.Controllers
 {
-    [ApiController]
+  [ApiController]
     [Route("[controller]")]
     public class MandelBrotController : ControllerBase
     {
