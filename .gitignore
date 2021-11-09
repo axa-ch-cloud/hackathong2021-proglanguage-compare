@@ -52,6 +52,7 @@ nb-configuration.xml
 node_modules
 db
 log.txt
+node/db.*.json
 
 # Build results
 [Dd]ebug/
