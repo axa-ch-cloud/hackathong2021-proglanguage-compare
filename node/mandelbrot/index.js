@@ -32,7 +32,7 @@ function draw(width, height) {
                 y: IMAGINARY_SET.start + (j / height) * (IMAGINARY_SET.end - IMAGINARY_SET.start)
             }
 
-            const [m, isMandelbrotSet] = mandelbrot(complex);
+            const [isMandelbrotSet] = mandelbrot(complex);
             column.push(!!isMandelbrotSet)
         }
 
