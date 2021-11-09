@@ -39,9 +39,9 @@ func Draw(width, height int64) *Matrix {
 	var i int64
 	var j int64
 
-	for i = 0; i < height; i++ {
-		for j = 0; j < width; j++ {
-			c := &complx{
+	for i = 0; i < width; i++ {
+		for j = 0; j < height; j++ {
+			c := complx{
 				x: realSet.x + (float64(i)/float64(width))*(realSet.y-realSet.x),
 				y: imaginarySet.x + (float64(j)/float64(height))*(imaginarySet.y-imaginarySet.x),
 			}

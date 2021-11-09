@@ -2,10 +2,11 @@ package main
 
 import (
 	"fmt"
-	"github.com/gorilla/mux"
 	"hackathon/mandelbrot/internal/rest"
 	"log"
 	"net/http"
+
+	"github.com/gorilla/mux"
 )
 
 // Define http methods
