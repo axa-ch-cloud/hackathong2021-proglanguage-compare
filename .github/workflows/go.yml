@@ -17,3 +17,7 @@ jobs:
         working-directory: ./go
         run: |
           go build ./cmd/mandelbrot
+      - name: Run test
+        working-directory: ./go
+        run: |
+          ./main & $(cd ../sh && sh index.sh)
