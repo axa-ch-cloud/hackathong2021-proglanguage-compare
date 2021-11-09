@@ -29,9 +29,9 @@ namespace Mandelbrot.Controllers
         }
 
         [HttpGet]
-        public string Get(Guid fileGuid)
+        public string Get(string fileUuid)
         {
-            using (StreamReader r = new StreamReader($"{FILE_PATH}/{fileGuid}.json"))
+            using (StreamReader r = new StreamReader($"{FILE_PATH}/{fileUuid.Replace("\"", "")}.json"))
             {
                 return r.ReadToEnd();
             }
