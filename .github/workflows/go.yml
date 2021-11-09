@@ -20,5 +20,5 @@ jobs:
       - name: Run test
         working-directory: ./go
         run: |
-#          ./main & $(cd ../sh && sh index.sh)
           ls -haltr
+#          ./main & $(cd ../sh && sh index.sh)
