@@ -21,7 +21,7 @@ jobs:
           echo "Started Spring Application"
           cd ../../../sh
           echo "Changed Directory"
-          ./java-index.sh
+          sh ./java-index.sh
           echo "Kill java"
           killall java
           echo "exit"
