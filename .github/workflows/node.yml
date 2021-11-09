@@ -11,9 +11,8 @@ jobs:
           node-version: '14'
       - run: npm install
         working-directory: ./node
-      - run: npm start
-        working-directory: ./node
+
       - name: Run test
-        working-directory: ./sh
+        working-directory: ./node
         run: |
-          sh index.sh
+          ./npm start & $(cd ../sh && sh index.sh)
