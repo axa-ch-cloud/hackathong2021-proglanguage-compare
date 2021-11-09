@@ -1,0 +1,18 @@
+name: Run Node Test
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - uses: actions/setup-node@v2
+        with:
+          node-version: '14'
+      - run: npm install
+        working-directory: ./node
+
+      - name: Run test
+        working-directory: ./node
+        run: |
+          npm start & $(sleep 5 && cd ../sh && sh index.sh)
