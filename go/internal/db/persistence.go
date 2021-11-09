@@ -5,7 +5,7 @@ import (
 	"fmt"
 	"io/ioutil"
 
-	uuid2 "github.com/google/uuid"
+	"github.com/google/uuid"
 )
 
 const (
@@ -13,9 +13,10 @@ const (
 	dir  = "./db/"
 )
 
-func Store(entity Entity) (string, error) {
-	uuid := uuid2.NewString()
+func Store(entity [][]bool) (string, error) {
+	uuid := uuid.NewString()
 	filename := fmt.Sprintf("%s%s.json", dir, uuid)
+
 	jsonData, err := json.Marshal(entity)
 	if err != nil {
 		panic(fmt.Sprintf("%v", err))

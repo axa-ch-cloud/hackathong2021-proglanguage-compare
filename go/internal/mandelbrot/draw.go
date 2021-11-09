@@ -1,33 +1,13 @@
 package mandelbrot
 
-var realSet = &complx{x: -2, y: 1}
-var imaginarySet = &complx{x: -1, y: 1}
+var realSet = complx{x: -2, y: 1}
+var imaginarySet = complx{x: -1, y: 1}
 
-type Matrix struct {
-	data       []bool
-	rows, cols int64
-}
-
-func NewMatrix(rows, cols int64) *Matrix {
-	return &Matrix{
-		data: make([]bool, cols*rows, cols*rows),
-		rows: rows,
-		cols: cols,
+func Draw(width, height int64) [][]bool {
+	matrix := make([][]bool, height)
+	for i := range matrix {
+		matrix[i] = make([]bool, width)
 	}
-}
-
-func (m *Matrix) index(x, y int64) int64 {
-	return x + m.cols*y
-}
-
-func (m *Matrix) coord(i int64) (x, y int64) {
-	x = i % m.cols
-	y = i / m.cols
-	return
-}
-
-func Draw(width, height int64) *Matrix {
-	matrix := NewMatrix(width, height)
 
 	var i int64
 	var j int64
@@ -41,7 +21,7 @@ func Draw(width, height int64) *Matrix {
 
 			_, isSet := calculate(c)
 
-			matrix.data[matrix.index(j, i)] = isSet
+			matrix[i][j] = isSet
 		}
 	}
 	return matrix

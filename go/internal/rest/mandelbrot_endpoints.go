@@ -33,7 +33,7 @@ func PostMandelbrot(w http.ResponseWriter, r *http.Request) {
 	}
 
 	mandelbrotRes := mandelbrot.Draw(params.Width, params.Height)
-	uuid, err := db.Store(db.New(mandelbrotRes))
+	uuid, err := db.Store(mandelbrotRes)
 
 	if err != nil {
 		panic(err)

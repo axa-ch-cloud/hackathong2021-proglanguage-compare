@@ -19,8 +19,8 @@ func TestDraw(t *testing.T) {
 	}
 	for _, tt := range tests {
 		t.Run(tt.name, func(t *testing.T) {
-			if gotRes := Draw(tt.args.width, tt.args.height); !reflect.DeepEqual(gotRes.data, tt.wantRes) {
-				t.Errorf("Draw() = %v, want %v", gotRes.data, tt.wantRes)
+			if gotRes := Draw(tt.args.width, tt.args.height); !reflect.DeepEqual(gotRes, tt.wantRes) {
+				t.Errorf("Draw() = %v, want %v", gotRes, tt.wantRes)
 			}
 		})
 	}
