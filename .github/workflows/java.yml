@@ -21,3 +21,4 @@ jobs:
           cd ../../../sh
           sh java-index.sh
           killall java
+          exit
