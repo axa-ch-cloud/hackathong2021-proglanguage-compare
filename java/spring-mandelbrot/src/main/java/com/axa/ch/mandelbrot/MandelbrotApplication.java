@@ -8,10 +8,10 @@ import java.io.File;
 @SpringBootApplication
 public class MandelbrotApplication {
 
-  public static void main(String[] args) {
-    new File("data").mkdir();
+    public static void main(String[] args) {
+        new File("data").mkdir();
 
-    SpringApplication.run(MandelbrotApplication.class, args);
-  }
+        SpringApplication.run(MandelbrotApplication.class, args);
+    }
 
 }

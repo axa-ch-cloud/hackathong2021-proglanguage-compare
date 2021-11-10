@@ -13,7 +13,7 @@ func TestDraw(t *testing.T) {
 	tests := []struct {
 		name    string
 		args    args
-		wantRes [][]bool
+		wantRes []bool
 	}{
 		{"", args{width: 10, height: 10}, expected()},
 	}
@@ -26,18 +26,22 @@ func TestDraw(t *testing.T) {
 	}
 }
 
-func expected() [][]bool {
-	return [][]bool{
-		{false, false, false, false, false, true, false, false, false, false},
-		{false, false, false, false, false, true, false, false, false, false},
-		{false, false, false, false, false, true, false, false, false, false},
-		{false, false, false, false, true, true, true, false, false, false},
-		{false, false, false, false, false, true, false, false, false, false},
-		{false, false, true, true, true, true, true, true, true, false},
-		{false, true, true, true, true, true, true, true, true, true},
-		{false, false, true, true, true, true, true, true, true, false},
-		{false, false, false, false, false, false, false, false, false, false},
-		{false, false, false, false, false, false, false, false, false, false},
+func BenchmarkDraw(b *testing.B) {
+	for i := 0; i < b.N; i++ {
+		Draw(512, 512)
 	}
+}
+
+func expected() []bool {
+	return []bool{false, false, false, false, false, true, false, false, false, false,
+		false, false, false, false, false, true, false, false, false, false,
+		false, false, false, false, false, true, false, false, false, false,
+		false, false, false, false, true, true, true, false, false, false,
+		false, false, false, false, false, true, false, false, false, false,
+		false, false, true, true, true, true, true, true, true, false,
+		false, true, true, true, true, true, true, true, true, true,
+		false, false, true, true, true, true, true, true, true, false,
+		false, false, false, false, false, false, false, false, false, false,
+		false, false, false, false, false, false, false, false, false, false}
 
 }

@@ -2,10 +2,12 @@ package main
 
 import (
 	"fmt"
-	"github.com/gorilla/mux"
 	"hackathon/mandelbrot/internal/rest"
 	"log"
 	"net/http"
+	"time"
+
+	"github.com/gorilla/mux"
 )
 
 // Define http methods
@@ -14,13 +16,14 @@ const (
 	httpPost = "POST"
 )
 
+var start = time.Now()
+
 func main() {
 	router := mux.NewRouter()
 	router.HandleFunc("/mandelbrot", rest.PostMandelbrot).Methods(httpPost)
 	router.HandleFunc("/mandelbrot/{uuid}", rest.GetMandelbrot).Methods(httpGet)
-	portStr := fmt.Sprintf(":%s", "8080")
-	log.Println("will listen on ", portStr)
-	if err := http.ListenAndServe(portStr, router); err != nil {
+	fmt.Printf("Startuptime: %v\n", time.Since(start))
+	if err := http.ListenAndServe(":8080", router); err != nil {
 		log.Fatalf("unable to start http server, %s", err)
 	}
 }

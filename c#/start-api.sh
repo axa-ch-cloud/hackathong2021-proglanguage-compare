@@ -1,2 +1,2 @@
 cd Mandelbrot/Mandelbrot/
-dotnet run
+time dotnet run
