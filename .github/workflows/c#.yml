@@ -14,5 +14,10 @@ jobs:
       - name: Run test
         working-directory: ./c#
         run: |
-          sh start-api.sh & $(sleep 1 && cd ../sh && sh c-sharp-index.sh)
-
+          sh start-api.sh &
+          pid=$!
+          sleep 1
+          cd ../sh
+          ./monitor.sh 1 > monitoring.out &
+          sh c-sharp-index.sh
+          cat monitoring.out
