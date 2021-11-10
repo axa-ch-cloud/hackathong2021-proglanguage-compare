@@ -1,2 +1,2 @@
 cd Mandelbrot/Mandelbrot/
-dotnet run -c Release -v d
+dotnet run --no-build -c Release -v n
