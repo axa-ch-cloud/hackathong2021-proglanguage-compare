@@ -9,14 +9,14 @@ jobs:
       - uses: BSFishy/pip-action@v1
         with:
           packages: |
-            click
-            Flask
-            itsdangerous
-            Jinja2
-            MarkupSafe
-            uuid
-            waitress
-            Werkzeug
+            click==8.0.3
+            Flask==2.0.2
+            itsdangerous==2.0.1
+            Jinja2==3.0.3
+            MarkupSafe==2.0.1
+            uuid==1.30
+            waitress==2.0.0
+            Werkzeug==2.0.2
       - uses: actions/setup-python@v2
         with:
           python-version: '3.x'
