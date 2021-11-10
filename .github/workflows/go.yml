@@ -24,6 +24,4 @@ jobs:
       - name: Run test
         working-directory: ./go
         run: |
-          set -x
-          ./mandelbrot & $(pid=$! && echo "$pid" && cd ../sh && sh index.sh && ps -p $pid -o %cpu,%mem)
-          set +x
+          ./mandelbrot & $(pid=$! && cd ../sh && sh index.sh && ps -p $pid -o %cpu,%mem)
