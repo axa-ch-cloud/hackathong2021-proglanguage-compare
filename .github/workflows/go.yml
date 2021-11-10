@@ -14,7 +14,7 @@ jobs:
         with:
           packages: |
             memory_profiler
-            matplotlib
+#            matplotlib
       - uses: actions/setup-go@v2
         with:
           go-version: '1.17.2'
@@ -34,5 +34,5 @@ jobs:
         working-directory: ./go
         run: |
           set -x
-          $(mprof run ./mandelbrot) & $(cd ../sh && sh index.sh && pkill mandelbrot && mprof plot)
+          $(mprof run ./mandelbrot) & $(cd ../sh && sh index.sh && ps && killall mandelbrot && mprof plot)
           set +x
