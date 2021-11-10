@@ -11,10 +11,8 @@ jobs:
           dotnet-version: '3.1.x'
       - run: dotnet build Mandelbrot -c Release
         working-directory: ./c#
-
       - name: Run test
         working-directory: ./c#
         run: |
           sh start-api.sh & $(sleep 1 && cd ../sh && sh c-sharp-index.sh)
 
-          
