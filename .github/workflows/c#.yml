@@ -16,3 +16,5 @@ jobs:
         working-directory: ./c#
         run: |
           sh start-api.sh & $(cd ../sh && sh c-sharp-index.sh)
+
+          
