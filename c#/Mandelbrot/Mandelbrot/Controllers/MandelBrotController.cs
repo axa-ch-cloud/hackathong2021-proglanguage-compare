@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 using Newtonsoft.Json;
 using System;
 using System.IO;
@@ -21,10 +20,14 @@ namespace Mandelbrot.Controllers
         {
             var mandelbrot = Draw(input.Width, input.Height);
 
-            string json = JsonConvert.SerializeObject(mandelbrot, Formatting.Indented);
             Guid fileGuid = Guid.NewGuid();
             Directory.CreateDirectory(FILE_PATH);
-            System.IO.File.WriteAllText($"{FILE_PATH}/{fileGuid}.json", json);
+
+            using (TextWriter writer = System.IO.File.CreateText($"{FILE_PATH}/{fileGuid}.json"))
+            {
+              var serializer = new JsonSerializer();
+              serializer.Serialize(writer, mandelbrot);
+            }
 
             return fileGuid;
         }
