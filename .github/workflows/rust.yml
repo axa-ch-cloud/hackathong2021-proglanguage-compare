@@ -1,4 +1,4 @@
-name: Run Go Test
+name: Run Rust Test
 on: [push]
 
 jobs:
