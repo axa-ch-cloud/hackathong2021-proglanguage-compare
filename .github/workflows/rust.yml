@@ -17,4 +17,9 @@ jobs:
       - name: Run test
         working-directory: ./rust/mandelbrot
         run: |
-          ./target/release/mandelbrot & $(cd ../../sh && sh index.sh)
+          ./target/release/mandelbrot &
+          pid=$!
+          cd ../../sh
+          ./monitor.sh $pid > monitoring.out &
+          sh index.sh
+          cat monitoring.out
