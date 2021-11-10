@@ -17,16 +17,19 @@ def mandelbrotCreate():
     f = open("db." + uuidString + ".json", "a")
     f.write(json.dumps(result))
     f.close()
+    print('POST CALLED AND FILE WRITTEN ' + "db." + uuidString + ".json")
     return uuidString
 
 @app.route('/mandelbrot/<uuid>')
 def getMandelbrot(uuid):
     f = open("db." + uuid + ".json" , "r")
+    data = f.read()
     response = app.response_class(
-        response=f.read(),
+        response=data,
         status=200,
         mimetype='application/json'
     )
+    print('GET CALLED')
     return response
 
 
