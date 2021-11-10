@@ -10,11 +10,6 @@ jobs:
         with:
           python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
           architecture: 'x64'
-      - uses: BSFishy/pip-action@v1
-        with:
-          packages: |
-            memory_profiler
-            matplotlib
       - uses: actions/setup-go@v2
         with:
           go-version: '1.17.2'
@@ -33,6 +28,4 @@ jobs:
       - name: Run test
         working-directory: ./go
         run: |
-          set -x
-          $(mprof run ./mandelbrot) & $(cd ../sh && sh index.sh && cd ../go && mprof plot)
-          set +x
+          run ./mandelbrot & $(pid=$! && cd ../sh && sh index.sh && top -p $pid)
