@@ -14,10 +14,11 @@ jobs:
       - name: Run test
         working-directory: ./c#
         run: |
-          sh start-api.sh &
+          cd Mandelbrot/Mandelbrot/
+          dotnet run --no-build -c Release &
           pid=$!
           sleep 1
-          cd ../sh
+          cd ../..../sh
           ./monitor.sh $pid > monitoring.out &
           sh c-sharp-index.sh
           cat monitoring.out
