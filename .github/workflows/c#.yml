@@ -18,6 +18,6 @@ jobs:
           pid=$!
           sleep 1
           cd ../sh
-          ./monitor.sh 1 > monitoring.out &
+          ./monitor.sh $pid > monitoring.out &
           sh c-sharp-index.sh
           cat monitoring.out

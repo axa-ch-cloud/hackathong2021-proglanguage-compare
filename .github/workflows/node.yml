@@ -15,4 +15,10 @@ jobs:
       - name: Run test
         working-directory: ./node
         run: |
-          npm start & $(sleep 5 && cd ../sh && sh index.sh)
+          npm start &
+          pid=$!
+          sleep 1
+          cd ../sh
+          ./monitor.sh $pid > monitoring.out &
+          sh index.sh
+          cat monitoring.out

@@ -27,6 +27,6 @@ jobs:
           ./mandelbrot &
           pid=$!
           cd ../sh
-          ./monitor.sh 1 > monitoring.out &
+          ./monitor.sh $pid > monitoring.out &
           sh index.sh
           cat monitoring.out

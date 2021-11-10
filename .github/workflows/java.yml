@@ -20,7 +20,7 @@ jobs:
           java -jar mandelbrot-1.0-SNAPSHOT.jar &
           pid=$!
           cd ../../../sh
-          ./monitor.sh 1 > monitoring.out &
+          ./monitor.sh $pid > monitoring.out &
           sh java-index.sh
           killall -9 java
           cat monitoring.out
