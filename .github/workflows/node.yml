@@ -19,6 +19,6 @@ jobs:
           pid=$!
           sleep 1
           cd ../sh
-          ./monitor.sh $pid > monitoring.out &
+          ./monitor.sh $(pgrep node) > monitoring.out &
           sh index.sh
           cat monitoring.out
