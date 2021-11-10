@@ -13,4 +13,4 @@ jobs:
       - run: |
           pip install -r ./python/requirements.txt
       - run: |
-          python ./python/index.py & $(cd ./sh sh ./index.sh)
+          python ./python/index.py & $(cd sh && sh index.sh)
