@@ -33,4 +33,6 @@ jobs:
       - name: Run test
         working-directory: ./go
         run: |
-          $(mprof run ./mandelbrot) & $(cd ../sh && sh index.sh && mprof plot)
+          set -x
+          $(mprof run ./mandelbrot) & $(cd ../sh && sh index.sh && cd ../go && mprof plot)
+          set +x
