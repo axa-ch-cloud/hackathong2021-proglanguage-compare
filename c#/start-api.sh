@@ -1,2 +1,3 @@
 cd Mandelbrot/Mandelbrot/
-time dotnet run
+echo $(date +%s)
+dotnet run --no-build -c Release -v diag
