@@ -6,11 +6,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - uses: BSFishy/pip-action@v1
+        with:
+          requirements: python/requirements.txt
       - uses: actions/setup-python@v2
         with:
           python-version: '3.x'
           architecture: 'x64'
-      - run: pip install -r requirements.txt && python index.py
+      - run: python index.py
         working-directory: ./python
 
       - name: Run test
