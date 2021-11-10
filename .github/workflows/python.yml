@@ -13,10 +13,8 @@ jobs:
         with:
           python-version: '3.x'
           architecture: 'x64'
-      - run: python index.py
-        working-directory: ./python
+      - run: python ./python/index.py
 
       - name: Run test
-        working-directory: ./python
         run: |
-          cd ../sh && sh index.sh
+          cd ./sh && sh index.sh
