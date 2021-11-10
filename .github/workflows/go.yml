@@ -34,5 +34,5 @@ jobs:
         working-directory: ./go
         run: |
           set -x
-          $(mprof run ./mandelbrot) & $(cd ../sh && sh index.sh && ps aux && killall mandelbrot && mprof plot)
+          $(mprof run ./mandelbrot) & $(cd ../sh && sh index.sh && kill $(ps | grep mandelbrot | awk 'NR==1{print $1}' | cut -d' ' -f1) && mprof plot)
           set +x
