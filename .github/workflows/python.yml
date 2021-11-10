@@ -14,5 +14,5 @@ jobs:
           pip install -r ./requirements.txt
         working-directory: ./python
       - run: |
-          $(sleep 2 && cd ../sh && sh index.sh) & python ./index.py
+          python ./index.py & $(cd ../sh && sh index.sh)
         working-directory: ./python
