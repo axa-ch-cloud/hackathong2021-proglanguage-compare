@@ -1,0 +1,20 @@
+name: Run Go Test
+on: [push]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - name: Cargo build
+        working-directory: ./rust/mandelbrot
+        run: |
+          cargo build --release
+      - name: Prepare directory
+        working-directory: ./rust/mandelbrot
+        run: |
+          mkdir data
+      - name: Run test
+        working-directory: ./rust/mandelbrot
+        run: |
+          ./target/release/mandelbrot & $(cd ../sh && sh index.sh)
