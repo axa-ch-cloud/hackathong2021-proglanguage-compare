@@ -16,7 +16,6 @@ jobs:
       - name: Run test
         working-directory: ./java/spring-mandelbrot/target
         run: |
-#          $(cd ../../../sh && sh java-index.sh && killall -9 java)
            java -jar mandelbrot-1.0-SNAPSHOT.jar & $(cd ../../../sh && sh java-index.sh && killall -9 java)
 
 
