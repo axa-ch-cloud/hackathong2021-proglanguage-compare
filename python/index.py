@@ -19,6 +19,16 @@ def mandelbrotCreate():
     f.close()
     return uuidString
 
+@app.route('/mandelbrot/<uuid>')
+def getMandelbrot(uuid):
+    f = open("db." + uuid + ".json" , "r")
+    response = app.response_class(
+        response=f.read(),
+        status=200,
+        mimetype='application/json'
+    )
+    return response
+
 
 @app.route("/")
 def index():
