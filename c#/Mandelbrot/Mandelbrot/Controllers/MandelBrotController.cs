@@ -51,16 +51,16 @@ namespace Mandelbrot.Controllers
             {
                 p = new Complex()
                 {
-                    X = Math.Pow(z.X, 2) - Math.Pow(z.Y, 2),
+                    X = z.X*z.X - z.Y*z.Y,
                     Y = 2 * z.X * z.Y
                 };
                 z.X = p.X + c.X;
                 z.Y = p.Y + c.Y;
 
-                d = Math.Sqrt(Math.Pow(z.X, 2) + Math.Pow(z.Y, 2));
+                d = Math.Sqrt(z.X*z.X + z.Y*z.Y);
                 n++;
             } while (d <= 2 && n < maxIterations);
-            
+
             return new Tuple<int, bool>(n, d <= 2);
         }
 
