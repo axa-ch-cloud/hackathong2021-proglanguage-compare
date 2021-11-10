@@ -12,6 +12,7 @@ def mandelbrotCreate():
     json_data = flask.request.json
     a_height = json_data["height"]
     a_width = json_data["width"]
+    print("Width: " + str(a_width) + " Height:" + str(a_height))
     uuidString = str(uuid.uuid4())
     result = draw(a_width, a_height)
     f = open("db." + uuidString + ".json", "a")
