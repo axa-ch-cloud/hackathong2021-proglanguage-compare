@@ -12,12 +12,7 @@ jobs:
       - run: dotnet build Mandelbrot
         working-directory: ./c#
 
-      - name: Start Api
-        working-directory: ./c#
-        run: |
-          sh start-api.sh
-
       - name: Run test
         working-directory: ./c#
         run: |
-          $(sleep 3 && cd ../sh && sh c-sharp-index.sh)
+          sh start-api.sh & $(sleep 3 && cd ../sh && sh c-sharp-index.sh)
