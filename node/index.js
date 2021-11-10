@@ -68,5 +68,5 @@ app.get('/', (req, res) => {
 */
 
 app.listen(port, () => {
-  console.log(`After: ${Math.round(Date.now() / 1000)}`)
+  console.log(`END   boot server time ${Date.now()}`);
 });
