@@ -12,7 +12,7 @@ namespace Mandelbrot.Controllers
     {
         private const string FILE_PATH = "db";
 
-        public MandelBrotController(ILogger<MandelBrotController> logger)
+        public MandelBrotController()
         {
         }
 
@@ -44,16 +44,13 @@ namespace Mandelbrot.Controllers
             var maxIterations = 80;
             var z = new Complex();
             int n = 0;
-            Complex p;
+            Complex p = new Complex();
             double d;
 
             do
             {
-                p = new Complex()
-                {
-                    X = z.X*z.X - z.Y*z.Y,
-                    Y = 2 * z.X * z.Y
-                };
+                p.X = z.X * z.X - z.Y * z.Y;
+                p.Y = 2 * z.X * z.Y;
                 z.X = p.X + c.X;
                 z.Y = p.Y + c.Y;
 
@@ -78,15 +75,14 @@ namespace Mandelbrot.Controllers
         private bool[,] Draw(double width, double height)
         {
             bool[,] map = new bool[Convert.ToInt32(width), Convert.ToInt32(height)];
+            var complex = new Complex();
+
             for (int i=0; i < width; i++)
             {
                 for(int j =0; j < height; j++)
                 {
-                    var complex = new Complex()
-                    {
-                        X = REAL_SET.Start + (((double)i) / width) * (REAL_SET.End - REAL_SET.Start),
-                        Y = IMAGINARY_SET.Start + (((double)j) / height) * (IMAGINARY_SET.End - IMAGINARY_SET.Start)
-                    };
+                    complex.X = REAL_SET.Start + (((double)i) / width) * (REAL_SET.End - REAL_SET.Start);
+                    complex.Y = IMAGINARY_SET.Start + (((double)j) / height) * (IMAGINARY_SET.End - IMAGINARY_SET.Start);
 
                     var t = Mandelbrot(complex);
 
