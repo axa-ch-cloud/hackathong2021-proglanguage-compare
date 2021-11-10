@@ -8,8 +8,8 @@ jobs:
       - uses: actions/checkout@v2
       - uses: actions/setup-java@v2
         with:
-          distribution: 'temurin' # See 'Supported distributions' for available options
-          java-version: '17'
+          distribution: 'zulu' # See 'Supported distributions' for available options
+          java-version: '11'
       - name: Maven install
         working-directory: ./java/spring-mandelbrot
         run: |
@@ -17,8 +17,7 @@ jobs:
       - name: Run test
         working-directory: ./java/spring-mandelbrot/target
         run: |
-          $(cd ../../../sh && sh java-index.sh && killall -9 java)
-#          java -jar mandelbrot-1.0-SNAPSHOT.jar & $(cd ../../../sh && sh java-index.sh && killall -9 java)
+           java -jar mandelbrot-1.0-SNAPSHOT.jar & $(cd ../../../sh && sh java-index.sh && killall -9 java)
 
 
 
