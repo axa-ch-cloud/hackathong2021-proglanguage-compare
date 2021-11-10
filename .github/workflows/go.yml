@@ -25,5 +25,5 @@ jobs:
         working-directory: ./go
         run: |
           set -x
-          ./mandelbrot & $(pid=$! && echo "$pid" && cd ../sh && sh index.sh && TERM=xterm top -p $pid)
+          ./mandelbrot & $(pid=$! && echo "$pid" && cd ../sh && sh index.sh && TERM=xterm top -b -p $pid)
           set +x
