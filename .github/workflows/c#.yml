@@ -15,4 +15,4 @@ jobs:
       - name: Run test
         working-directory: ./c#
         run: |
-          time sh start-api.sh & $(sleep 3 && cd ../sh && sh c-sharp-index.sh)
+          sh start-api.sh & $(sleep 3 && cd ../sh && sh c-sharp-index.sh)
