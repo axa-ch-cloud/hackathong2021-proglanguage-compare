@@ -53,6 +53,7 @@ node_modules
 db
 log.txt
 node/db.*.json
+python/db.*.json
 
 # Build results
 [Dd]ebug/
