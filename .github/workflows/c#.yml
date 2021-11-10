@@ -15,7 +15,7 @@ jobs:
         working-directory: ./c#
         run: |
           cd Mandelbrot/Mandelbrot/
-          dotnet bin/Release/netcoreapp3.1/Mandelbrot.dll &
+          dotnet run --no-build -c Release &
           pid=$!
           sleep 1
           cd ../../../sh
